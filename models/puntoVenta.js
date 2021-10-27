@@ -1,10 +1,5 @@
 const { Schema, model } = require('mongoose');
 const PuntoVentaSchema = Schema({
-    empresa: {
-        type: Schema.Types.ObjectId,
-        ref: 'Empresa',
-        required: true
-    },
     usuario: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',

@@ -1,4 +1,6 @@
-const existeModelo = async (valor, campo, Modelo) => {
+const { request } = require("express");
+
+const existeModelo = async (valor, campo, Modelo, req = request) => {
     let obj = {}
     Object.defineProperty(obj, campo, {
         value: valor,
@@ -6,11 +8,12 @@ const existeModelo = async (valor, campo, Modelo) => {
         enumerable: true,
         configurable: true
     });
+
     const existeModelo = await Modelo.findOne(obj)
-    //console.log('este es el modelo')
     if (existeModelo) {
         throw new Error(`El valor ${campo} : ${valor} , existe en la base de datos`);
     }
+
 }
 const noexisteModelo = async (valor, campo, Modelo) => {
     let obj = {}

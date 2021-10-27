@@ -26,6 +26,19 @@ const login = async (req = request, res = response) => {
         token
     })
 }
+const renovarToken = async (req = request, res = response) => {
+    const id = req.usuario._id
+    const usuario = req.usuario
+    console.log(id)
+    const token = await generarJWT(id)
+    res.json({
+        ok: true,
+        msg: 'Estas en el renovar token',
+        token,
+        usuario
+    })
+}
 module.exports = {
-    login
+    login,
+    renovarToken
 }
